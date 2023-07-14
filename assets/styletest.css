@@ -1,0 +1,824 @@
+*{ /* ปรับการตั้งค่าหน้าจอทั้งหมด */
+    margin: 0;
+    padding: 0; 
+    outline: none; border: none;
+    text-transform: capitalize;
+    line-height: 1.5;
+    text-decoration: none;
+    font-family: 'Poppins',sans-serif;
+}
+/* Class and Var */
+:root{
+    --bg-color:rgb(94, 197, 245); /* ตัวแปรสีพื้นหลังหลัก */
+    --head-heigth: 60px;/* ตัวแปรความกว้างของแถบHeader */
+    --sidebar-width: 224px; /* ตัวแปรความกว้างของ Sidebar */
+    --sidebarres-width: 0px; /* ตัวแปรความกว้างของ Sidebar ในResponsive*/
+    --sidebar-li-width:180px;  /* ตัวแปรความกว้างของ li ใน sidebar */
+    --contentpadd-paddingleft:224px; /* ตัวแปร Padding ของตัวPage-content */
+    --contentpaddres-paddingleft:0px; /* ตัวแปร Padding ของตัวPage-content ในResponsive */
+    --aside-display:block;
+    --text-color:rgb(49, 190, 255) ;
+    --nav-width:224px;
+    --navres-width:50px;
+    --card-color:rgb(248, 248, 248);
+}
+
+/* Class กรอบรูปขอบสามเหลี่ยม 2มุม  */
+.border-con::before{ /* Class สำหรับกรอบสามเหลี่ยม ด้านล่าง */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-width: 80px;
+    min-height: 80px;
+    border-bottom: 10px solid var(--bg-color);
+    border-left: 10px solid var(--bg-color);
+    
+}
+
+.border-con::after{ /* Class สำหรับกรอบสามเหลี่ยม ด้านบน*/
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    border-top: 10px solid var(--bg-color);
+    border-right: 10px solid var(--bg-color);
+   
+}
+/* Class กรอบรูปขอบสามเหลี่ยม 2มุม  */
+
+/* Class กรอบ */
+.border{
+    border: 1px solid black;
+}
+
+
+/* อนิเมชั่นการ Fadein ของElement สามารถนำ ชื่อ อนิเมชั่นไปใช้ในSelectors CSS ได้  */
+.pagefadein{
+    animation: pagefadein 1s;
+    }
+    @keyframes pagefadein{
+        from{
+            opacity: 0;
+            transform: rotateY(-10deg);
+        }
+        to{
+            opacity: 1;
+            transform: rotateY(0);
+        }
+    }
+/* อนิเมชั่นการ Fadein ของElement สามารถนำ ชื่อ อนิเมชั่นไปใช้ในSelectors CSS ได้  */
+    
+
+
+/* Class and Var */
+
+/* Class main Content */
+
+.page-wrapper{ /* การครอบElement ทั้งหมดเพื่อจัดการขนาดและการวางตำแหน่ง */
+    display: flex;
+    flex-direction: column;  
+}
+
+.page-contrainer{/* สร้าง Contrainer เพื่อครอบการทำงานของ Element Content ภายในหน้าเว็บ */
+    display: flex;   
+    justify-content: flex-start;
+}
+
+
+
+main{/* พื้นที่หลักในการแสดงElement */
+    transition: 0.75s ease;
+    padding-left: var(--contentpadd-paddingleft);
+    width: 100%; 
+    min-height: 100%;/* ให้Content ขยับไปทางซ้ายเพื่อจัดให้เข้ากับ Sidebar */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    
+}
+
+.content{ /* section Content  */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    min-width: 50%;
+    height: min(90%, 1000px);
+    
+  
+}
+
+.content-1{ /* section Content  */
+    display: flex;
+    width: 100%;
+    height: min(90%, 120rem);
+    justify-content: space-around;
+    overflow: hidden;
+  
+}
+
+.content-2{ /* section Content  */
+    display: flex;
+    width: 100%;
+    height: 120vh;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+    
+  
+}
+.content-3{ /* section Content  */
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+    
+  
+}
+/* Class main Content */
+
+
+.head-text{ /* Class ขนาดฟอนต์ตั้งเป็นหัวข้อ */
+    font-size: 3rem;
+}
+
+.focus-text{/* Class ขนาดฟอนต์ตั้งเป็นตัวใหญ่พิเศษ*/
+    font-size: 60px;
+}
+
+.paragrap-text{
+    font-size: 40px;
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow: auto;
+}
+
+/* Header */
+header{
+    display: flex;
+    min-height: var(--head-heigth);
+    z-index: 2;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: var(--nav-width);
+    justify-content: flex-end;
+    transition: 0.80s ease;
+    transition-delay: 0.05s;
+    
+}
+
+/* Class ที่จะทำให้ Element บน header ชิดซ้าย */
+.header-left{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+    width: 100px;
+}
+/* ปุ่มกดสำหรับแสดงเมนู*/
+.btn-menu{
+    width: 24px;
+    height: 24px;
+    margin: 0 16px;
+    cursor: pointer;
+}
+/* กล่องElement Logo*/
+.logo{
+    width: 97px;
+}
+/* ขนาดรูปโลโก้*/
+.logo img{
+    width: 50px;
+}
+/* Header */
+
+/* Open-close Menu */
+body.close{
+    
+    --sidebar-width:0px; /* เปลี่ยนค่าตัวแปรเมื่อกดเพิ่มClass จาก Toggle ในJavascript */
+    --contentpadd-paddingleft:0px;/* เปลี่ยนค่าตัวแปรเมื่อกดเพิ่มClass จาก Toggle ในJavascript */
+    --aside-display:none;
+    --nav-width:50px;
+    --sidebar-li-width:0px;
+}
+
+
+/* sidebar */
+
+.side-bar{ /* sidebar เลือกให้ติดกับขอบซ้ายของเว็บไซต์ */ 
+    width: var(--sidebar-width);
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.75s ease;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+   
+}
+/* .text{
+    white-space: nowrap;
+    overflow: hidden;
+   
+}
+.nav-link{
+color: white;
+display: flex;
+align-items: center;
+border-left: 3px solid transparent ;
+justify-content: flex-start;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+
+.nav-link:is(:hover, .active){
+    background-color: rgb(238, 69, 69);
+}
+
+.nav-link.nav-link:is(.active){
+    border-color: brown;
+    color: red;
+} */
+/* ทำให้Element sidebar นำItem ที่เกินขอบ ซ่อนและทำเป็น scroll */
+
+.aside-nav{
+    overflow: hidden;
+}
+
+/* ตกแต่งให้ Element ภายใน aside  */
+.aside-nav li{
+    text-decoration: none;
+    list-style: none;
+    letter-spacing: 5px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 10px; 
+    position: relative;
+    text-transform: uppercase;
+    border: 1px solid white;
+    cursor: pointer;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: #fff;/* กรอบล่างElement */
+    max-width: var(--sidebar-li-width);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: 0.75s ease;
+} 
+/* แต่งตัวอักษรภายใน Element li */
+li a{
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    display: inline-block;
+    padding-left: 2px;
+    width: 180px; /* ขยายขอบElement ให้เท่ากับขอบElement li เพื่อที่จะให้กดเมนูจาก ขอบเมนูได้ ไม่จำเป็นต้องกดที่ตัวอักษร */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/* Class สำหรับการแสดงการใช้งานของ เมนู Sidebar โดยขยายตัวอักษร */
+.sider-bar-active a{
+    font-size: 25px;
+    width: 170px;
+    
+}
+/* Class สำหรับการแสดงการใช้งานของ เมนู Sidebar  */
+.aside-nav .sider-bar-active {
+    border: 3px solid #ffff;
+   
+} 
+
+
+
+/* ส่วนAnimation */
+.aside-nav li::before{ /* กรอบAnimation ขนาดนำเม้าส์ชี้ สร้างElement มาไว้ข้างๆโดยใช้ before */
+    content: '';
+    position: absolute;
+    left: -2px;  
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: 1px solid transparent; /* สร้างกรอบแบบพื้นหลังใส */
+    
+}
+/* ให้ตัวอักษรขยายขนาดที่เม้าส์ชี้ที่เมนู โดยจะไม่แสดงบนเมนูที่กำลังใช้งาน*/
+.aside-nav li:not(.sider-bar-active):hover{
+   
+    transform: scale(1.1);
+}
+/* ให้เมนูมีกรอบแสดงที่เม้าส์ชี้ที่เมนู โดยจะไม่แสดงบนเมนูที่กำลังใช้งาน*/
+.aside-nav li:not(.sider-bar-active):hover{
+  animation: borderanime 0.5s linear forwards;
+  
+}
+/* คีย์อนิเมชั่น*/
+@keyframes borderanime{
+    25% {/* ให้เริ่มต้นจากขอบบน*/
+       
+        border-top-color: #fff;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        
+    }
+
+    50% {/* แสดงขอบบน ซ้าย ขวา พร้อมกัน*/
+        
+        border-top-color: #fff;
+        border-right-color: #fff;
+        border-left-color: #fff;
+        
+    }
+
+    100% {/* แสดงขอบบน ซ้าย ขวา พร้อมกัน ค้างเอาไว้*/
+      
+        border-top-color: #fff;
+        border-right-color: #fff;
+        border-left-color: #fff;
+       
+    }
+} 
+/* ส่วนAnimation */
+
+
+
+/* siderbar */
+
+
+
+/* introduce-content */
+.introduce-content{
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;     
+}
+
+/* introduce-img */
+.introduce-img{
+   min-height: 50rem;
+   box-sizing: border-box;
+   width: 50%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   
+  
+}
+.introduce-img .focus-text span{
+    color: var(--bg-color);
+}
+
+.img-content{
+    min-height: 450px;
+
+    display: flex;
+    width: 350px; 
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+.img-content img{   
+    max-width: 250px;
+}
+
+.introduce-article{
+    box-sizing: border-box;    
+    width: 50%;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+
+
+
+/* introduce-content */
+
+/* index */
+
+
+
+
+
+/* about */
+.about-content{ 
+    display: flex;  
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    min-height: 139vh;
+    
+}
+
+.text-about{   
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--bg-color); 
+    height: 100px;
+    
+}
+
+.text-about h1{   
+    font-size: clamp(1rem,6vw,4rem);
+    
+}
+
+.img-about {   
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+.img-about img{   
+    max-width: 200px;
+    border-radius: 10%;
+}
+
+
+
+.text-text #nameeng{
+    font-size: 30px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.text-text #namethai{
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    padding-left: 30px;
+}
+
+
+
+.expain-about{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.expain-about h1{
+    font-size: 25px;
+    color: var(--text-color);
+    font-weight: bold
+}
+
+/* .edu-about{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    grid-column: 4/6;
+    grid-row: 1/2;
+   
+} */
+
+.skill-grid{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+   
+}
+
+.header-skill {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    font-size: clamp(1rem,6vw,3rem);
+}
+
+.header-skill span{
+    padding-left: 20px ;
+    padding-right: 20px ;
+    font-size: 70px;
+    display: none;
+}
+
+
+
+.skillcard{
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(248, 248, 248);
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0,0.35);
+    position: relative;
+}
+
+.skillcard-header{
+   width: 100%;
+   height: 70px;    
+   font-size: 15px;;
+   border-top-right-radius: 20px;
+   border-top-left-radius: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+}
+
+.skillcard-lv{
+    display: inline-block;
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    top: 17rem;
+    left: 70px;
+    border-radius: 20px;
+    background-color:  rgb(248, 248, 248);
+    box-shadow: 0 2px 5px rgba(0, 0, 0,0.35);
+}
+
+.skillcard-lv p{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    
+}
+
+
+.skillcard-img{
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+}
+
+.skillcard-details{
+    width: 100%;
+    height: 200px;
+   
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.skillcard-buttom{
+    
+}
+
+
+
+/* Workshop */
+.content-2 #text-main{
+    color: var(--text-color);
+    font-size: clamp(1rem,6vw,4rem);
+}
+.content-2 #text-head{
+    color: var(--text-color);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: clamp(1rem,6vw,2rem);
+}
+.content-2 i{
+    cursor: pointer;
+    display: none;
+}
+
+
+.workshop{
+    display: flex;
+    width: 100%;
+    height: 35vh;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: 0.75s ease;
+}
+.workcard{
+    margin-top: 10px;
+    min-width: 300px;
+    height: 200px;
+    background-color: rgb(248, 248, 248);
+    border-radius: 10%;      
+    overflow: hidden; 
+    position: relative;
+    transition: 0.75s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0,0.35);
+    
+    
+}
+
+.workcard img{
+    position: relative;
+    top: 0px;
+    transition: 0.75s ease-in-out;
+}
+.workcard .workdetails{
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  height: 150px;
+  background: rgba(102, 98, 98, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+
+.workdetails h1{
+    color: #fff;
+
+}
+
+.workcard .workdetails button{
+    font-weight: bold;
+    color: var(--bg-color);
+    margin-top: 20px; 
+    width: 200px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 25px;
+    border: 2px solid var(--bg-color);
+    cursor: pointer;
+  }
+
+.workcard:hover {
+    height: 300px;
+   
+}
+
+.contact-img{
+    width: 105px;
+    height: 100px;
+    clip-path: circle(50px at center 50px);
+    position: relative;
+    top: -10px;
+    overflow: hidden;
+    
+}
+
+.contact-img img{
+   width: 150px;
+    
+}
+
+.tab-contanct{
+
+    gap: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.list-contact{
+    display: flex;
+    justify-content: flex-start;
+    width: 300px;
+    height: 80px;
+    border-radius: 40px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0,0.35);
+    background-color: var(--card-color);
+}
+.contact-details{
+    background-color: aqua; 
+    width: 300px; 
+}
+
+.contact-1{
+    display: flex;
+    width: fit-content;
+    gap: 50px;
+}
+
+.content-flex{
+    margin-top: 5rem;
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+}
+
+.content-3 h1{
+    font-size: clamp(1rem,6vw,4rem);
+    color: var(--text-color);
+}
+
+
+
+@media only screen and (max-width: 600px) {
+   
+    header{
+        min-height: var(--head-heigth);   
+        width: var(--nav-width);
+      
+    }
+    .side-bar{ /* sidebar เลือกให้ติดกับขอบซ้ายของเว็บไซต์ */ 
+        width: var(--sidebar-width);
+        z-index: 1;
+    }
+    main{/* พื้นที่หลักในการแสดงElement */
+        transition: 0.75s ease;
+        padding-left: 0px;
+        
+    }
+    .content{ /* section Content  */      
+        flex-direction: column;
+       
+    }
+
+    .introduce-img{
+       width: 100%;
+    }
+    .introduce-article{
+        width: 100%;
+    }
+
+    .introduce-content{   
+        flex-direction: column;
+       align-items: center;
+       
+    }
+    .expain-about{
+    width: 95%;
+    }
+    
+    .focus-text{
+        font-size: 50px;
+        width: 100%;
+       
+    }
+
+    .paragrap-text{
+        font-size: 25px;
+        width: 100%;
+      
+    }
+
+    .skill-grid{
+        display: grid;
+        grid-template-columns: 300px;
+        grid-auto-flow: row;
+        grid-gap: 10px;
+        
+       
+    }
+
+    .content-1{
+        margin-top: 2rem;
+        height: fit-content;
+        padding-bottom: 10px;
+    }
+     
+    .workshop{
+     margin-left: 10px;      
+     gap: 30px;
+     width: 80%;
+     min-height: 20rem;
+     overflow-x: scroll;
+     justify-content: flex-start;
+     scroll-behavior: smooth;
+    }
+   
+    .content-flex{
+        flex-direction: column;
+    }
+
+    .tab-contanct{
+        align-items: center;
+    }
+
+    .contact-1{
+        flex-direction: column;
+        
+    }
+    
+   
+    body.close{
+    
+        --sidebarres-width:224px; /* เปลี่ยนค่าตัวแปรเมื่อกดเพิ่มClass จาก Toggle ในJavascript */
+        --contentpaddres-paddingleft:30px;/* เปลี่ยนค่าตัวแปรเมื่อกดเพิ่มClass จาก Toggle ในJavascript */
+        
+    }
+}

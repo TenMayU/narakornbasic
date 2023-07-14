@@ -1,0 +1,25 @@
+*{ /* ปรับการตั้งค่าหน้าจอทั้งหมด */
+    margin: 0;
+    padding: 0; 
+    outline: none; border: none;
+    text-transform: capitalize;
+    line-height: 1.5;
+    text-decoration: none;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-color:rgb(94, 197, 245); /* ตัวแปรสีพื้นหลังหลัก */
+    --head-heigth: 60px;/* ตัวแปรความกว้างของแถบHeader */
+    --sidebar-width: 224px; /* ตัวแปรความกว้างของ Sidebar */
+    --sidebarres-width: 0px; /* ตัวแปรความกว้างของ Sidebar ในResponsive*/
+    --sidebar-li-width:180px;  /* ตัวแปรความกว้างของ li ใน sidebar */
+    --contentpadd-paddingleft:224px; /* ตัวแปร Padding ของตัวPage-content */
+    --contentpaddres-paddingleft:0px; /* ตัวแปร Padding ของตัวPage-content ในResponsive */
+    --aside-display:block;
+    --text-color:rgb(49, 190, 255) ;
+    --nav-width:224px;
+    --navres-width:50px;
+    --card-color:rgb(248, 248, 248);
+}
