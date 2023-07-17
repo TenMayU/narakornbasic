@@ -21,6 +21,9 @@ document.getElementById('about').addEventListener('click',function(){
 document.getElementById('portfolio').addEventListener('click',function(){
     document.getElementById('content-portfolio').scrollIntoView({behavior:"smooth",block:"start"});
 })
+document.getElementById('contact').addEventListener('click',function(){
+    document.getElementById('content-contact').scrollIntoView({behavior:"smooth",block:"start"});
+})
 
 /* ฟังชั่นก์การ ย่อขยายแถบSidebar */
 const menuBtn = document.querySelector('.js-btn');/* ดึงข้อมูลTag element มาจาก Class js-btn*/
@@ -81,3 +84,17 @@ arrowicon.forEach(icon => {
     });
     
 });
+
+const li = document.querySelectorAll(".side-bar-menu")
+const sec = document.querySelectorAll("section")
+
+function activeMenu(){
+    var menus = document.getElementsByClassName("side-bar-menu");
+    let len = sec.length;
+    while(--len && window.scrollY + 100 < sec[len].offsetTop - 80){}
+    li.forEach(ltx => ltx.classList.remove("sider-bar-active"));
+    li[len].classList.add("sider-bar-active")
+}
+
+activeMenu()
+window.addEventListener("scroll",activeMenu)
